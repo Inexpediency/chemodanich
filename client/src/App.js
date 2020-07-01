@@ -1,5 +1,6 @@
 import React from 'react'
 import { Loader } from './components/Loader/Loader'
+import { useAuth } from './hooks/auth.hook'
 
 function App() {
     const { login, logout, token, userId, ready } = useAuth()
