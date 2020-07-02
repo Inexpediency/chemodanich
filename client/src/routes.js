@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { MainPage } from './pages'
+import { AuthPage, MainPage } from './pages'
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
@@ -18,17 +18,14 @@ export const useRoutes = isAuthenticated => {
                 <Redirect to="/" />
             </Switch>
         )
-        // return (
-        //     <MainPage/>
-        // )
     }
 
-    // return (
-    //     <Switch>
-    //         <Route path="/" exact>
-    //             <AuthPage />
-    //         </Route>
-    //         <Redirect to="/" />
-    //     </Switch>
-    // )
+    return (
+        <Switch>
+            <Route path="/" exact>
+                <AuthPage />
+            </Route>
+            <Redirect to="/" />
+        </Switch>
+    )
 }
