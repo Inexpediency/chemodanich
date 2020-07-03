@@ -1,11 +1,12 @@
-const express = require('express')
-const config = require('config')
-const path = require('path')
-const mongoose = require('mongoose')
+import express  from 'express'
+import config from 'config'
+import path from 'path'
+import mongoose from 'mongoose'
+import { OptionsJson } from 'body-parser'
 
 const app = express()
 
-app.use(express.json({ extended: true }))
+app.use(express.json(<OptionsJson>{ extended: true }))
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.join(__dirname, 'client', 'build')))
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const PORT = config.get('port') || 5000
-const MONGOURI = config.get('mongoUri')
+const MONGOURI: string = config.get('mongoUri')
 
 async function start() {
     try {
